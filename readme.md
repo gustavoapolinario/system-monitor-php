@@ -3,8 +3,8 @@
 ## Etapas:
 ### Laravel Base
 - criar banco de dados
-~~- tabela dos cadastros~~
-~~- criar tabela dos servidores~~ (2017_02_16_235547_create_server_info.php)
+- ~~tabela dos cadastros~~
+- ~~criar tabela dos servidores~~ (2017_02_16_235547_create_server_info.php)
 - criar tabela dos logs (2017_02_17_000332_create_server_log.php)
 - criar tabela das empresas cadastradas
 - ligar tabela de usuários e de servidores a de empresas cadastradas
