@@ -1,0 +1,10 @@
+/html/monitor/node_modules
+/html/monitor/public/storage
+/html/monitor/public/hot
+/html/monitor/storage/*.key
+/html/monitor/vendor
+/html/monitor/.idea
+/html/monitor/Homestead.json
+/html/monitor/Homestead.yaml
+/html/monitor/.env
+.DS_Store
