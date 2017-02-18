@@ -7,7 +7,7 @@
 - ~~criar tabela dos servidores~~ (2017_02_16_235547_create_server_info.php)
 - ~~criar tabela dos logs~~ (2017_02_17_000332_create_server_log.php)
 - ~~criar tabela das empresas cadastradas~~ (2017_02_18_093009_create_company)
-- ligar tabela de usuários e de servidores a de empresas cadastradas
+- ~~ligar tabela de usuários e de servidores a de empresas cadastradas~~ (migrates: modify_user_to_company,modify_server_to_company)
 - criar tabela que irá hospedar nossos logs no cliente
 ### Atualizar logs
 - Cron para acessar servidor do cliente
@@ -58,6 +58,7 @@
 
 -----
 ## Futuras:
+- Criar permissões para os usuários da empresa
 - Atualizar registro do servidor para definir que está atualizando (para mais servidores)
 - Criar extenção no chrome para ver os relaórios
 
