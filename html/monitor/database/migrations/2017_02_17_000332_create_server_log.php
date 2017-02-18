@@ -16,8 +16,9 @@ class CreateServerLog extends Migration
         Schema::create('server_log', function (Blueprint $table) {
             $table->dateTime('created_at');
             $table->string('load_average');
+            $table->string('mem_info');
             $table->string('qtd_querys');
-            $table->string('sleeps');
+            $table->string('qtd_sleeps');
             $table->integer('server_info_id')->unsigned();
 
             $table->foreign('server_info_id')->references('id')->on('server_info');

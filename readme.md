@@ -5,8 +5,8 @@
 - criar banco de dados
 - ~~tabela dos cadastros~~
 - ~~criar tabela dos servidores~~ (2017_02_16_235547_create_server_info.php)
-- criar tabela dos logs (2017_02_17_000332_create_server_log.php)
-- criar tabela das empresas cadastradas
+- ~~criar tabela dos logs~~ (2017_02_17_000332_create_server_log.php)
+- ~~criar tabela das empresas cadastradas~~ (2017_02_18_093009_create_company)
 - ligar tabela de usuários e de servidores a de empresas cadastradas
 - criar tabela que irá hospedar nossos logs no cliente
 ### Atualizar logs
