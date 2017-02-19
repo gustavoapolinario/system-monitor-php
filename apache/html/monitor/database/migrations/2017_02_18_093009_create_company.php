@@ -29,6 +29,6 @@ class CreateCompany extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('server_info');
+        Schema::dropIfExists('company');
     }
 }

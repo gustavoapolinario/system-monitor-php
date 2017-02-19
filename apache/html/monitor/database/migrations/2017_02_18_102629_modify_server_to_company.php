@@ -28,6 +28,7 @@ class ModifyServerToCompany extends Migration
     public function down()
     {
         Schema::table('server_info', function (Blueprint $table) {
+            $table->dropForeign(['company_id']);
             $table->dropColumn('company_id');
         });
     }

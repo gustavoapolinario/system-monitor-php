@@ -25,5 +25,5 @@ RUN unzip -o /tmp/phpredis.zip -d /tmp && ls -lah /tmp/phpredi* && rm /tmp/phpre
 #RUN docker-php-ext-install -j$(nproc) pdo_mysql
 
 # Run the command on container startup
-CMD cron
+CMD /usr/sbin/crond
 

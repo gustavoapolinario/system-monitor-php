@@ -25,6 +25,7 @@ services:
       - redis
     volumes:
         - ./apache/html:/var/www/html
+        - ./cron_log/:/var/cron_log
         - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
         - ./server_config_files/apache.conf:/etc/apache2/sites-enabled/apache.conf:ro
     environment:
@@ -58,7 +59,7 @@ services:
         - DB_DATABASE=monitor
         - DB_USERNAME=dba
         - DB_PASSWORD=zoilo367
-#        - CACHE_DRIVER=redis
+        - CACHE_DRIVER=redis
         - REDIS_HOST=redis
         - REDIS_PASSWORD=null
         - REDIS_PORT=6379
