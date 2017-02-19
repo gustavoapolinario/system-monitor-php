@@ -14,6 +14,7 @@ class CreateServerLog extends Migration
     public function up()
     {
         Schema::create('server_log', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
             $table->dateTime('created_at');
             $table->string('load_average');
             $table->string('mem_info');
