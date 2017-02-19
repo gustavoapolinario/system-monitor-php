@@ -14,7 +14,7 @@ services:
   redis:
     image: redis
   apache:
-    build: ./apache-php
+    build: ./apache
     ports:
         - "80:80"
         - "443:443"
@@ -23,9 +23,9 @@ services:
       - db
       - redis
     volumes:
-        - ./html:/var/www/html
-        - ./apache-php/php.ini:/etc/php/conf.d/30-custom.ini:ro
-        - ./apache-php/apache.conf:/etc/apache2/sites-enabled/apache.conf:ro
+        - ./apache/html:/var/www/html
+        - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
+        - ./server_config_files/apache.conf:/etc/apache2/sites-enabled/apache.conf:ro
     environment:
         - TERM=xterm-256color
         - DB_CONNECTION=mysql
@@ -37,6 +37,28 @@ services:
         - REDIS_HOST=redis
         - REDIS_PASSWORD=null
         - REDIS_PORT=6379
+  cron-log:
+    build: ./cron_log
+    ports:
+        - "9001:9000"
+    links:
+      - db
+      - redis
+    volumes:
+        - ./cron_log/html:/var/www/html
+#        - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
+    environment:
+        - TERM=xterm-256color
+        - DB_CONNECTION=mysql
+        - DB_HOST=db
+        - DB_PORT=3306
+        - DB_DATABASE=monitor
+        - DB_USERNAME=dba
+        - DB_PASSWORD=zoilo367
+        - REDIS_HOST=redis
+        - REDIS_PASSWORD=null
+        - REDIS_PORT=6379
+
 
 
 

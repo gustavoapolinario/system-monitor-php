@@ -6,5 +6,5 @@
 /html/monitor/.idea
 /html/monitor/Homestead.json
 /html/monitor/Homestead.yaml
-/html/monitor/.env
+/**/.env
 .DS_Store
