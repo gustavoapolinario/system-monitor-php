@@ -10,12 +10,11 @@
 - ~~ligar tabela de usuários e de servidores a de empresas cadastradas~~ (migrates: modify_user_to_company,modify_server_to_company)
 - ~~criar tabela que irá hospedar nossos logs no cliente~~ (monitor.sh)
 ### Atualizar logs
-- ~~Cron para acessar servidor do cliente~~
+- Cron para acessar servidor do cliente
 - ~~Pegar os dados da tabela de logs do cliente~~
 - Processar o que for necessário para o relatório
-- Salvar log do cliente no redis
-- Salvar log do cliente no banco
-- Atualizar registro do servidor para definir que foi atualizado
+- ~~Salvar log do cliente no redis~~
+- ~~Salvar log do cliente no banco~~
 ### Criação das telas
 - Login do usuário
 - Menu do usuário com as maquinas dele

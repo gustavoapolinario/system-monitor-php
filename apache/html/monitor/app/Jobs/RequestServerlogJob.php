@@ -9,7 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\ServerInfo;
 use App\ServerLog;
-use App\requestedServerLog;
+use App\RequestedServerLog;
+use App\ProcessaRelatorio;
 
 class RequestServerlogJob implements ShouldQueue
 {
@@ -35,7 +36,7 @@ class RequestServerlogJob implements ShouldQueue
      */
     public function handle()
     {
-        $requestedServerLog = new requestedServerLog();
+        $requestedServerLog = new RequestedServerLog();
         $requestedServerLog->setDynamicConnection($this->serverInfo);
         $requestedValues = $requestedServerLog->all();
 
@@ -45,6 +46,9 @@ class RequestServerlogJob implements ShouldQueue
         foreach ($requestedValues as $logValue) {
             $serverLog->fillValuesFromRequested($logValue);
             $serverLog->save();
+
+            $processaRelatorio = new ProcessaRelatorio($serverLog);
+            $processaRelatorio->processalog();
         }
         
     }

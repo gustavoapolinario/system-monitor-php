@@ -17,6 +17,7 @@ class CreateServerLog extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->dateTime('created_at');
             $table->double('load_average');
+            $table->integer('mem_info');
             $table->integer('mem_total');
             $table->integer('mem_free');
             $table->integer('buffers');
