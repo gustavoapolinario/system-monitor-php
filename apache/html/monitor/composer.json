@@ -41,6 +41,12 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "migrate": [
+            "php artisan migrate:refresh"
+        ],
+        "migrate+seed": [
+            "php artisan db:seed --class=ServerInfosSeed"
         ]
     },
     "config": {

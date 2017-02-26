@@ -13,16 +13,24 @@ class CreateServerLog extends Migration
      */
     public function up()
     {
-        Schema::create('server_log', function (Blueprint $table) {
+        Schema::create('server_logs', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->dateTime('created_at');
-            $table->string('load_average');
-            $table->string('mem_info');
-            $table->string('qtd_querys');
-            $table->string('qtd_sleeps');
+            $table->double('load_average');
+            $table->integer('mem_total');
+            $table->integer('mem_free');
+            $table->integer('buffers');
+            $table->integer('cached');
+            $table->integer('swap_total');
+            $table->integer('swap_free');
+            $table->String('uname');
+
+            $table->integer('qtd_querys');
+            $table->integer('qtd_sleeps');
+
             $table->integer('server_info_id')->unsigned();
 
-            $table->foreign('server_info_id')->references('id')->on('server_info');
+            $table->foreign('server_info_id')->references('id')->on('server_infos');
         });
     }
 
@@ -33,6 +41,6 @@ class CreateServerLog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('server_log');
+        Schema::dropIfExists('server_logs');
     }
 }

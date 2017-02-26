@@ -6,29 +6,29 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCompany extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('company', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('name');
-            $table->dateTime('created_at');
-            $table->dateTime('last_update')->nullable();
-            $table->softDeletes();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('companys', function (Blueprint $table) {
+			$table->increments('id')->unsigned();
+			$table->string('name');
+			$table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+			$table->softDeletes();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('company');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('companys');
+	}
 }

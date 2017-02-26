@@ -23,16 +23,16 @@ cached=$(awk '/^Cached/ { print $2 }' /proc/meminfo)
 swapTotal=$(awk '/SwapTotal/ { print $2 }' /proc/meminfo)
 swapFree=$(awk '/SwapFree/ { print $2 }' /proc/meminfo)
 
-json_return="$json_return memTotal: '$memTotal',"
-json_return="$json_return memFree:'$memFree',"
-json_return="$json_return buffers:'$buffers',"
-json_return="$json_return cached:'$cached',"
-json_return="$json_return swapTotal:'$swapTotal',"
-json_return="$json_return swapFree:'$swapFree',"
+json_return="$json_return \"memTotal\":\"$memTotal\","
+json_return="$json_return \"memFree\":\"$memFree\","
+json_return="$json_return \"buffers\":\"$buffers\","
+json_return="$json_return \"cached\":\"$cached\","
+json_return="$json_return \"swapTotal\":\"$swapTotal\","
+json_return="$json_return \"swapFree\":\"$swapFree\","
 
 # get cpu info
 loadAvg=$(awk '{print $1}' /proc/loadavg)
-json_return="$json_return loadAvg:'$loadAvg',"
+json_return="$json_return \"loadAvg\":\"$loadAvg\","
 
 
 
@@ -43,7 +43,7 @@ json_return="$json_return loadAvg:'$loadAvg',"
 #json_return="$json_return disk_space:{ $disk_space },"
 
 uname=$(uname)
-json_return="$json_return uname:'$uname'}"
+json_return="$json_return \"uname\":\"$uname\"}"
 json_return_sql=$( echo $json_return | sed -e "s/'/\\\'/g" )
 #echo $json_return_sql
 #echo "insert into monitor.logs set value = '$json_return_sql')"

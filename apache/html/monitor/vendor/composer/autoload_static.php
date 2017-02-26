@@ -808,6 +808,8 @@ class ComposerStaticInite88bc5ae58c93c4d5e406b1782084f13
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'ServerInfos' => __DIR__ . '/../..' . '/database/seeds/ServerInfos.php',
+        'ServerInfosSeed' => __DIR__ . '/../..' . '/database/seeds/ServerInfosSeed.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
     );
 

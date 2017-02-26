@@ -13,12 +13,18 @@ class CreateServerInfo extends Migration
      */
     public function up()
     {
-        Schema::create('server_info', function (Blueprint $table) {
+        Schema::create('server_infos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->string('ip');
+            $table->string('host');
+            $table->string('port')->nullable();
+            $table->string('database')->nullable();
+            $table->string('username');
+            $table->string('password');
+            $table->string('charset')->nullable();
             $table->dateTime('created_at');
-            $table->dateTime('last_update')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('last_sync_log')->nullable();
             $table->softDeletes();
         });
     }
@@ -30,6 +36,6 @@ class CreateServerInfo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('server_info');
+        Schema::dropIfExists('server_infos');
     }
 }

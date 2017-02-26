@@ -13,10 +13,10 @@ class ModifyServerToCompany extends Migration
      */
     public function up()
     {
-        Schema::table('server_info', function (Blueprint $table) {
+        Schema::table('server_infos', function (Blueprint $table) {
             $table->integer('company_id')->unsigned();
 
-            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('company_id')->references('id')->on('companys');
         });
     }
 
@@ -27,7 +27,7 @@ class ModifyServerToCompany extends Migration
      */
     public function down()
     {
-        Schema::table('server_info', function (Blueprint $table) {
+        Schema::table('server_infos', function (Blueprint $table) {
             $table->dropForeign(['company_id']);
             $table->dropColumn('company_id');
         });

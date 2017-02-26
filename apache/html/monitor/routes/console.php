@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Inspiring;
+use App\Console\Commands\RequestServerlogCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+Artisan::command('command:RequestServerlog', function (RequestServerlogCommand $requestServerlogCommand) {
+    $requestServerlogCommand->handle();
+});
+
