@@ -27,4 +27,14 @@ class ServerLog extends Model
 		$this->qtd_sleeps = 0;
 
 	}
+
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function server()
+    {
+        return $this->belongsTo('App\ServerInfo');
+    }
+
 }

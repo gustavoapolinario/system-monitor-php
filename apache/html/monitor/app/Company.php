@@ -15,4 +15,20 @@ class Company extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\ServerInfo');
+    }
 }

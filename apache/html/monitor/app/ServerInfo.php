@@ -15,4 +15,23 @@ class ServerInfo extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function serversLog()
+    {
+        return $this->hasMany('App\ServerInfo');
+    }
+
 }
