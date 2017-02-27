@@ -16,6 +16,10 @@ RUN docker-php-ext-install -j$(nproc) iconv pdo pdo_mysql
 #curl
 #   && docker-php-ext-enable memcached
 
+
+RUN apt-get install -y npm
+RUN npm install -g gulp bower
+
 RUN a2enmod rewrite
 #RUN a2enmod ssl
 

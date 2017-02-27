@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+@section('title')
+Register
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -61,11 +64,11 @@
                         </div>
 
                         @if (count($companies)>0)
-                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }} mb10">
                                 <label for="company_id" class="col-md-4 control-label">Company</label>
 
                                 <div class="col-md-6">
-                                    <select id="company_id" name="company_id" class="form-control" required>
+                                    <select id="company_id" name="company_id" class="browser-default" required>
                                         @foreach ($companies as $company)
                                             <option value="{{ $company->id }}">{{ $company->name }}</option>
                                         @endforeach
@@ -81,11 +84,11 @@
                         @endif
 
                         @if (count($roles)>0)
-                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }} mb10">
                                 <label for="roles" class="col-md-4 control-label">Roles</label>
 
                                 <div class="col-md-6">
-                                    <select id="roles" name="roles" class="form-control" required multiple>
+                                    <select id="roles" name="roles" class="browser-default" required multiple>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
                                         @endforeach
