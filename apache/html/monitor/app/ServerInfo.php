@@ -34,4 +34,9 @@ class ServerInfo extends Model
         return $this->hasMany('App\ServerInfo');
     }
 
+    static function getMyServers() {
+        $server = new ServerInfo();
+        return $server->where('company_id', \Auth::user()->company()->first()->id)->get();
+    }
+
 }

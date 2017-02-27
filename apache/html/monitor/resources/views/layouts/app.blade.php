@@ -37,8 +37,11 @@
 					<a href="#!name"><span class="name">{{ Auth::user()->name }}</span></a>
 				</div>
 			</li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a href="#!">Second Link</a></li>
+			@if ($servers = App\ServerInfo::getMyServers())
+				@foreach ($servers as $server)
+					<li><a href="{{ URL::to('/report/' . $server->id) }}">{{ $server->name }}</a></li>
+				@endforeach
+			@endif
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Config</a></li>
 			@if (Auth::user()->hasRole('manage_users'))
@@ -59,7 +62,7 @@
 	<h1>@yield('title')</h1>
 </nav>
 
-		@yield('content')
+@yield('content')
 
 <script>
 $(".button-collapse").sideNav();

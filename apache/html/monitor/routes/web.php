@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/report/{id}', function ($id) {
+    return $id;
+})->where('id', '[0-9]+');
 
 /*
 https://laravel.com/docs/5.4/authentication

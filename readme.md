@@ -17,7 +17,7 @@
 - ~~Salvar log do cliente no banco~~
 ### Criação das telas
 - ~~Login do usuário~~
-- Menu do usuário com as maquinas dele
+- ~~Menu do usuário com as maquinas dele~~
 - Exibição de 1 relatório
 - Relatório multiplos relatórios em tela
 - Relatório dinâmico com ajax
