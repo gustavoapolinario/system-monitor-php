@@ -52,6 +52,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
                         @if (count($companies)>0)
                             <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
                                 <label for="company_id" class="col-md-4 control-label">Company</label>
@@ -79,7 +87,7 @@
                                 <div class="col-md-6">
                                     <select id="roles" name="roles" class="form-control" required multiple>
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -91,14 +99,6 @@
                                 </div>
                             </div>
                         @endif
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
