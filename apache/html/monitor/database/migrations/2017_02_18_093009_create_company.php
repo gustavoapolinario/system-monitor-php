@@ -13,7 +13,7 @@ class CreateCompany extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('companys', function (Blueprint $table) {
+		Schema::create('companies', function (Blueprint $table) {
 			$table->increments('id')->unsigned();
 			$table->string('name');
 			$table->dateTime('created_at');
@@ -29,6 +29,6 @@ class CreateCompany extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('companys');
+		Schema::dropIfExists('companies');
 	}
 }

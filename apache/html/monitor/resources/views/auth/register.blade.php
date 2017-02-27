@@ -52,6 +52,26 @@
                             </div>
                         </div>
 
+                        @if (count($companys)>0)
+                            <div class="form-group{{ $errors->has('company_id') ? ' has-error' : '' }}">
+                                <label for="company_id" class="col-md-4 control-label">Company</label>
+
+                                <div class="col-md-6">
+                                    <select id="company_id" name="company_id" class="form-control" required>
+                                        @foreach ($companys as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('company_id'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('company_id') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 

@@ -16,7 +16,7 @@ class ModifyServerToCompany extends Migration
         Schema::table('server_infos', function (Blueprint $table) {
             $table->integer('company_id')->unsigned();
 
-            $table->foreign('company_id')->references('id')->on('companys');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

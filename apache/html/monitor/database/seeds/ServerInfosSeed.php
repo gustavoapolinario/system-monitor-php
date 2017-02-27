@@ -11,16 +11,17 @@ class ServerInfosSeed extends Seeder
 	 */
 	public function run()
 	{
-		DB::table('companys')->insert([
+		DB::table('companies')->insert([
 			'id' => 2,
 			'name' => 'docker',
 			'created_at' => date('Y-m-d H:i:s'),
 		]);
 
 
-		$company_id = DB::table('companys')->select('id')->where('name', 'docker')->first()->id;
+		$company_id = DB::table('companies')->select('id')->where('name', 'docker')->first()->id;
 
 		DB::table('users')->insert([
+			'id' => 2,
 			'name' => 'docker',
 			'email' => 'docker'.str_random(2).'@docker.com',
 			'password' => bcrypt('secret'),
@@ -30,8 +31,8 @@ class ServerInfosSeed extends Seeder
 		DB::table('server_infos')->insert([
 			'name' => 'monitor_db',
 			'host' => 'db',
-            'username' => 'dba',
-            'password' => 'zoilo367',
+			'username' => 'dba',
+			'password' => 'zoilo367',
 			'created_at' => date('Y-m-d H:i:s'),
 			'company_id' => $company_id,
 		]);

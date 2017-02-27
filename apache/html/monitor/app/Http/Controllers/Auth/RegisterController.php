@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register';
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -62,10 +62,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'company_id' => Auth::user()->hasRole('manage_admins') ? $data['company_id'] : Auth::user()->company()
         ]);
+
+        $roles = array_intersect($data['roles'], array_fetch(Auth::user()->roles()->toArray(), 'name'));
+        dd($roles);
+
+        $user->makeRoles($roles);
+
+        return $user;
     }
 }

@@ -46,7 +46,10 @@
         "migrate": [
             "php artisan migrate:refresh"
         ],
-        "migrate+seed": [
+        "seed admin": [
+            "php artisan db:seed --class=userAdminSeed"
+        ],
+        "seed serverinfo": [
             "php artisan db:seed --class=ServerInfosSeed"
         ]
     },
