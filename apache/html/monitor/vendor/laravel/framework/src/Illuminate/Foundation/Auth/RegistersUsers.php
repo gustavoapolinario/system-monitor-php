@@ -17,11 +17,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $company = [];
-        if(Auth::user()->hasRole('manage_admins')) {
-            $company = \App\Company::all();
-        }
-        return view('auth.register', compact('company'));
+        return view('auth.register');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -76,4 +77,21 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $companies = [];
+        if(Auth::user()->hasRole('manage_admins')) {
+            $companies = \App\Company::all();
+        }
+        $roles = Auth::user()->roles()->get();
+        return view('auth.register', compact('companies', 'roles'));
+    }
+
 }

@@ -31,12 +31,12 @@ class UserAdminSeed extends Seeder
 
 		$user_id = DB::table('users')->select('id')->where('name', 'admin')->first()->id;
 
-		DB::table('roles')->insert(
+		DB::table('roles')->insert([
 			['name' => 'manage_admins'],
 			['name' => 'manage_companys'],
 			['name' => 'manage_users'],
 			['name' => 'view_reports']
-		);
+		]);
 
 		$roles = DB::table('roles')->select('id')->get();
 
