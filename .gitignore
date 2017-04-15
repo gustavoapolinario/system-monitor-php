@@ -9,3 +9,6 @@ apache/html/monitor/Homestead.yaml
 /**/.env
 /**/.DS_Store
 apache/html/apache-log/*
+**/.bash_history
+apache/.bash_history
+
