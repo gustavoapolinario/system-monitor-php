@@ -3,17 +3,22 @@ services:
   db:
     image: mariadb:latest
     environment:
-     - MYSQL_ROOT_PASSWORD=Eak829ij23
-     - MYSQL_USER=dba
-     - MYSQL_PASSWORD=zoilo367
-     - TERM=xterm-256color
+      - MYSQL_ROOT_PASSWORD=Eak829ij23
+      - MYSQL_USER=dba
+      - MYSQL_PASSWORD=zoilo367
+      - TERM=xterm-256color
     ports:
       - "3306:3306"
     volumes:
-       - db-volume:/var/lib/mysql
-       - ./scripts:/scripts
+      - db-volume:/var/lib/mysql
+      - ./scripts:/scripts
+      - ./db/.bash_history:/root/.bash_history
+      - ./db/cron:/etc/cron.d/mycron
+#    command: bash -c "mysqld"
+#
   redis:
     image: redis
+#
   apache:
     build: ./apache
     ports:
@@ -24,45 +29,39 @@ services:
       - db
       - redis
     volumes:
-        - ./apache/html:/var/www/html
-        - ./cron_log/:/var/cron_log
-        - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
-        - ./server_config_files/apache.conf:/etc/apache2/sites-enabled/apache.conf:ro
+      - ./scripts:/var/www/scripts
+      - ./apache/html:/var/www/html
+      - ./cron_log/:/var/cron_log
+      - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
+      - ./server_config_files/apache.conf:/etc/apache2/sites-enabled/apache.conf:ro
+      - ./apache/.bash_history:/root/.bash_history
+      - ./apache/crontab:/etc/cron.d/apache
+    command: bash -c "cron && apache2-foreground"
     environment:
-        - TERM=xterm-256color
-        - DB_CONNECTION=mysql
-        - DB_HOST=db
-        - DB_PORT=3306
-        - DB_DATABASE=monitor
-        - DB_USERNAME=dba
-        - DB_PASSWORD=zoilo367
-        - CACHE_DRIVER=redis
-        - REDIS_HOST=redis
-        - REDIS_PASSWORD=null
-        - REDIS_PORT=6379
-#        - CACHE_DRIVER=memcached
-  cron-log:
-    build: ./cron_log
-    ports:
-        - "9001:9000"
-    links:
-      - db
-      - redis
-    volumes:
-        - ./cron_log/html:/var/www/html
-#        - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
-    environment:
-        - TERM=xterm-256color
-        - DB_CONNECTION=mysql
-        - DB_HOST=db
-        - DB_PORT=3306
-        - DB_DATABASE=monitor
-        - DB_USERNAME=dba
-        - DB_PASSWORD=zoilo367
-        - CACHE_DRIVER=redis
-        - REDIS_HOST=redis
-        - REDIS_PASSWORD=null
-        - REDIS_PORT=6379
+      - TERM=xterm-256color
+#
+#   cron-log:
+#     build: ./cron_log
+#     ports:
+#         - "9001:9000"
+#     links:
+#       - db
+#       - redis
+#     volumes:
+#         - ./cron_log/html:/var/www/html
+# #        - ./server_config_files/php.ini:/etc/php/conf.d/30-custom.ini:ro
+#     environment:
+#         - TERM=xterm-256color
+#         - DB_CONNECTION=mysql
+#         - DB_HOST=db
+#         - DB_PORT=3306
+#         - DB_DATABASE=monitor
+#         - DB_USERNAME=dba
+#         - DB_PASSWORD=zoilo367
+#         - CACHE_DRIVER=redis
+#         - REDIS_HOST=redis
+#         - REDIS_PASSWORD=null
+#         - REDIS_PORT=6379
 
 
 

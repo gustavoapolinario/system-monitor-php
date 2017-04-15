@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\RequestServerlogCommand'
     ];
 
     /**
@@ -26,6 +26,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        /*$schedule->call(function () {
+            \DB::table('server_logs')->delete();
+        })->everyMinute();*/
+        $schedule->command('command:RequestServerlog')->everyMinute()
+        //$schedule->command(RequestServerlogCommand::class)->everyMinute()
+        ->sendOutputTo(storage_path('logs/Cron-RequestServerlogCommand.log'));
     }
 
     /**

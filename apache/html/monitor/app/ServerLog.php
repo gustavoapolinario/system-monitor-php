@@ -37,4 +37,8 @@ class ServerLog extends Model
         return $this->belongsTo('App\ServerInfo');
     }
 
+    static function getLatest($id) {
+    	return \Redis::lRange("rel" . $id, 0, -1);
+    }
+
 }

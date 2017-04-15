@@ -5,7 +5,9 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-mysql -u $1 --password=$2 -B -N -e "use monitor;create table if not exists logs (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, time TIMESTAMP, value text)"
+#mysql -u $1 --password=$2 -B -N -e "use monitor;create table if not exists logs (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, time TIMESTAMP, value text)"
+#only for test
+mysql -h db -u $1 --password=$2 -B -N -e "use monitor;create table if not exists logs (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, time TIMESTAMP, value text)"
 
 # get memory info
 meminfo=$(cat /proc/meminfo)
@@ -47,4 +49,7 @@ json_return="$json_return \"uname\":\"$uname\"}"
 json_return_sql=$( echo $json_return | sed -e "s/'/\\\'/g" )
 #echo $json_return_sql
 #echo "insert into monitor.logs set value = '$json_return_sql')"
-mysql -u $1 --password=$2 -B -N -e "insert into monitor.logs set value = '$json_return_sql'"
+
+#mysql -u $1 --password=$2 -B -N -e "insert into monitor.logs set value = '$json_return_sql'"
+#only for test
+mysql -h db -u $1 --password=$2 -B -N -e "insert into monitor.logs set value = '$json_return_sql'"

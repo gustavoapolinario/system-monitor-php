@@ -29,6 +29,25 @@ class RequestServerlogJob implements ShouldQueue
         $this->serverInfo = $serverInfo;
     }
 
+    private function logRequest($type, $requestedValues) {
+
+
+        $times = array();
+        foreach ($requestedValues as $logValue) {
+            $times[] = $logValue->time;
+        }
+
+        $log = array(
+            'serverInfo' => ServerInfo::valuesForLog($this->serverInfo),
+            'returnCount' => count($requestedValues),
+            'timesReturned' => $times,
+        );
+
+        $text = json_encode($log) . "\n";
+
+        \App\MyLog::persist('Cron-RequestServerlogJob', $type, $text);
+    }
+
     /**
      * Execute the job.
      *
@@ -40,15 +59,19 @@ class RequestServerlogJob implements ShouldQueue
         $requestedServerLog->setDynamicConnection($this->serverInfo);
         $requestedValues = $requestedServerLog->all();
 
-        $serverLog = new ServerLog();
-        $serverLog->server_info_id = $this->serverInfo->id;
+        $this->logRequest("info", $requestedValues);
+        
 
         foreach ($requestedValues as $logValue) {
+            $serverLog = new ServerLog();
+            $serverLog->server_info_id = $this->serverInfo->id;
             $serverLog->fillValuesFromRequested($logValue);
             $serverLog->save();
 
             $processaRelatorio = new ProcessaRelatorio($serverLog);
             $processaRelatorio->processalog();
+
+            $logValue->delete();
         }
         
     }

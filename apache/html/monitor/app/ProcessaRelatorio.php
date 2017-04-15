@@ -27,7 +27,7 @@ class ProcessaRelatorio
      * @return void
      */
     public function processalog() {
-    	\Redis::lpush($this->redis_key, json_encode($this->serverLog->toJson()));
+    	\Redis::lpush($this->redis_key, $this->serverLog->toJson());
     	\Redis::ltrim($this->redis_key, 0, 10);
     }
 

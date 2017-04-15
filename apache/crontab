@@ -1,0 +1,7 @@
+
+#* * * * * php /var/www/html/monitor/artisan schedule:run >> /dev/null 2>&1
+* * * * * /usr/local/bin/php /var/www/html/monitor/artisan schedule:run >> /var/www/html/apache-log/cron-log 2>&1
+#* * * * * rm /var/www/html/teste.teste
+
+# crontab do servidor do cliente
+* * * * * /var/www/scripts/monitor.sh dba zoilo367

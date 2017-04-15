@@ -10,17 +10,17 @@
 - ~~ligar tabela de usuários e de servidores a de empresas cadastradas~~ (migrates: modify_user_to_company,modify_server_to_company)
 - ~~criar tabela que irá hospedar nossos logs no cliente~~ (monitor.sh)
 ### Atualizar logs
-- Cron para acessar servidor do cliente
+- ~~Cron para acessar servidor do cliente~~
 - ~~Pegar os dados da tabela de logs do cliente~~
-- Processar o que for necessário para o relatório
+- ~~Processar o que for necessário para o relatório~~(por enquanto só coloca no REDIS)
 - ~~Salvar log do cliente no redis~~
 - ~~Salvar log do cliente no banco~~
 ### Criação das telas
 - ~~Login do usuário~~
 - ~~Menu do usuário com as maquinas dele~~
-- Exibição de 1 relatório
-- Relatório multiplos relatórios em tela
-- Relatório dinâmico com ajax
+- ~~Exibição de 1 relatório~~
+- ~~Relatório multiplos relatórios em tela~~
+- ~~Relatório dinâmico com ajax~~
 ### Segurança
 - Ao logar, salvar em redis os servidores que o usuário tem acesso
 - Ao consultar a tela de relatório, verificar se o usuário tem acesso via redis
@@ -59,5 +59,5 @@
 ## Futuras:
 - Criar permissões para os usuários da empresa
 - Atualizar registro do servidor para definir que está atualizando (para mais servidores)
-- Criar extenção no chrome para ver os relaórios
+- Criar extenção no chrome para ver os relatórios
 

@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ReportController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // Apenas logado
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request, $id)
+    {
+
+        //$data = \App\ServerLog::getLatest($id);
+
+        return view('report', [
+            'id'=>$id
+        ]);
+        
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request, $id)
+    {
+        //\Redis::lpush($this->redis_key, json_encode($this->serverLog->toJson()));
+        //$data = Input::get('data1');
+        $data = \App\ServerLog::getLatest($id);
+
+        //somecodes
+
+        return \Response::json(array(
+            'success' => true,
+            'data'   => $data
+        )); 
+    }
+
+
+}
