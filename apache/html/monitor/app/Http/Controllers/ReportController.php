@@ -27,6 +27,10 @@ class ReportController extends Controller
 
         //$data = \App\ServerLog::getLatest($id);
 
+        if( !\App\ServerLog::canAccess($request, $id) ) {
+            return redirect('home');
+        }
+
         return view('report', [
             'id'=>$id
         ]);
@@ -40,11 +44,14 @@ class ReportController extends Controller
      */
     public function ajax(Request $request, $id)
     {
-        //\Redis::lpush($this->redis_key, json_encode($this->serverLog->toJson()));
-        //$data = Input::get('data1');
-        $data = \App\ServerLog::getLatest($id);
+        if( !\App\ServerLog::canAccess($request, $id) ) {
+            return \Response::json(array(
+                'success' => false,
+            ));
+        }
 
-        //somecodes
+
+        $data = \App\ServerLog::getLatest($id);
 
         return \Response::json(array(
             'success' => true,

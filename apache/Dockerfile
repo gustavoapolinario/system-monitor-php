@@ -40,5 +40,5 @@ RUN crontab /etc/cron.d/apache
 #RUN crontab /etc/cron.d/logServer
 
 #don't work here
-#RUN service cron reload
+RUN service cron start
 #RUN cron

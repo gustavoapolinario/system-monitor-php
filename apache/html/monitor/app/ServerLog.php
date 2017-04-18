@@ -41,4 +41,21 @@ class ServerLog extends Model
     	return \Redis::lRange("rel" . $id, 0, -1);
     }
 
+    static function canAccess(\Illuminate\Http\Request $request, $id) {
+    	
+    	$id_servers = array();
+    	if( $request->session()->exists('id_servers') ) {
+    		$id_servers = $request->session()->get('id_servers');
+    	}
+    	else {
+    		$my_servers = ServerInfo::getMyServers();
+    		foreach ($my_servers as $value) {
+    			$id_servers[] = $value->id;
+    		}
+
+    		$request->session()->put('id_servers', $id_servers);
+    	}
+    	return in_array($id, $id_servers);
+    }
+
 }

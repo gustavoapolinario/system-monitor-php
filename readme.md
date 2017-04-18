@@ -22,9 +22,9 @@
 - ~~Relatório multiplos relatórios em tela~~
 - ~~Relatório dinâmico com ajax~~
 ### Segurança
-- Ao logar, salvar em redis os servidores que o usuário tem acesso
-- Ao consultar a tela de relatório, verificar se o usuário tem acesso via redis
-- Ao consultar o ajax, verificar se o usuário tem acesso via redis
+- ~~salvar em redis os servidores que o usuário tem acesso~~
+- ~~Ao consultar a tela de relatório, verificar se o usuário tem acesso via redis~~
+- ~~Ao consultar o ajax, verificar se o usuário tem acesso via redis~~
 
 
 -----
